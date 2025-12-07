@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Audio Visualizer</title>
+    <meta name="description" content="A stunning audio visualizer that reacts to any audio playing on your system">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Background Canvas for Visualization -->
+        <canvas id="visualizer"></canvas>
+
+        <!-- Glassmorphism Control Panel -->
+        <div class="control-panel">
+            <h1 class="title">
+                <span class="gradient-text">Audio</span> Visualizer
+            </h1>
+
+            <p class="subtitle">Visualize any audio playing in a browser tab</p>
+
+            <!-- Start Button -->
+            <div class="start-section" id="startSection">
+                <button class="start-btn" id="startBtn">
+                    <div class="start-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polygon points="5,3 19,12 5,21" fill="currentColor" />
+                        </svg>
+                    </div>
+                    <span class="start-text">Start Listening</span>
+                    <span class="start-hint">Click to share a browser tab with audio</span>
+                </button>
+            </div>
+
+            <!-- Active Indicator -->
+            <div class="active-indicator hidden" id="activeIndicator">
+                <div class="pulse-ring"></div>
+                <div class="pulse-core"></div>
+                <span class="active-text">Listening to Tab Audio</span>
+            </div>
+
+            <!-- Stop Button -->
+            <button class="stop-btn hidden" id="stopBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="4" y="4" width="16" height="16" rx="2" />
+                </svg>
+                Stop Listening
+            </button>
+
+            <!-- Visualization Mode -->
+            <div class="viz-modes">
+                <span class="mode-label">Visualization Style</span>
+                <div class="mode-buttons">
+                    <button class="mode-btn active" data-mode="bars">Bars</button>
+                    <button class="mode-btn" data-mode="wave">Wave</button>
+                    <button class="mode-btn" data-mode="circular">Circular</button>
+                    <button class="mode-btn" data-mode="particles">Particles</button>
+                </div>
+            </div>
+
+            <!-- Color Theme -->
+            <div class="color-themes">
+                <span class="mode-label">Color Theme</span>
+                <div class="theme-buttons">
+                    <button class="theme-btn active" data-theme="neon" title="Neon"
+                        style="background: linear-gradient(135deg, #ff006e, #8338ec, #3a86ff);"></button>
+                    <button class="theme-btn" data-theme="sunset" title="Sunset"
+                        style="background: linear-gradient(135deg, #f72585, #ff7b00, #ffd000);"></button>
+                    <button class="theme-btn" data-theme="ocean" title="Ocean"
+                        style="background: linear-gradient(135deg, #00b4d8, #0077b6, #023e8a);"></button>
+                    <button class="theme-btn" data-theme="forest" title="Forest"
+                        style="background: linear-gradient(135deg, #2d6a4f, #40916c, #95d5b2);"></button>
+                    <button class="theme-btn" data-theme="fire" title="Fire"
+                        style="background: linear-gradient(135deg, #ff0000, #ff7700, #ffdd00);"></button>
+                </div>
+            </div>
+
+            <!-- Sensitivity Control -->
+            <div class="sensitivity-control">
+                <div class="slider-header">
+                    <span class="mode-label">Sensitivity</span>
+                    <span class="slider-value" id="sensitivityValue">1.5x</span>
+                </div>
+                <input type="range" id="sensitivitySlider" min="0.5" max="3" step="0.1" value="1.5" class="slider">
+            </div>
+
+            <!-- Smoothing Control -->
+            <div class="smoothing-control">
+                <div class="slider-header">
+                    <span class="mode-label">Smoothing</span>
+                    <span class="slider-value" id="smoothingValue">0.8</span>
+                </div>
+                <input type="range" id="smoothingSlider" min="0" max="0.95" step="0.05" value="0.8" class="slider">
+            </div>
+
+            <!-- Instructions -->
+            <div class="instructions">
+                <div class="instruction-header">
+                    <div class="instruction-icon">💡</div>
+                    <span>How to capture audio</span>
+                </div>
+                <ol class="instruction-steps">
+                    <li>Open <strong>YouTube</strong> in another browser tab</li>
+                    <li>Click <strong>"Start Listening"</strong> above</li>
+                    <li>In the popup, click <strong>"Chrome Tab"</strong></li>
+                    <li>Select your YouTube tab</li>
+                    <li><strong>IMPORTANT:</strong> Check "Share tab audio" ✓</li>
+                    <li>Click Share and play your music!</li>
+                </ol>
+                <div class="instruction-note">
+                    The visualizer captures audio directly from the shared tab!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
